@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westmailer</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="script" href="">
+</head>
+<body>
+   
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'w-removebg-preview.png' %}"  alt="Company Logo">
+                <h2 class="comp">Westmailer</h2>
+            </div>
+    <form  method="Post">
+   
+            <div class="c_job"><strong> <p class="caj">+ Create a Job </p></strong></div>
+            <div class="job-status"> <strong><p class="jp">Job Processor</p></strong> <strong><p class="jpa">ACTIVE</p></span></strong> </div>
+            <div class="cojd"><img  src="{% static 'reload_icon_138248.png' %}"  alt="?" class="coji"> <p class="coj">Continue Unfinished Job</p></div>
+            <div class="vajd"><img src="{% static 'active.jpg' %}" alt="?" class="vaji"><p class="vaj">View Active Job</p></div>
+            <div class="vfhd"><img src="{% static 'history.png' %}" alt="" class="vfhi"><p class="vfh">View Full History</p></div>
+        </div>
+    </form>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="create-job-poster">
+                <div class="mailer-text"> <h3>Create Job</h3> </div>                
+            </div>
+        <form  method="Post" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <div class="mailer-text"> <h5>Mailer: Gmail</h5> </div>
+
+            {% if messages %}
+            {% for message in messages %}
+           <p style="color:red; padding:5px'"> {{message}}</p>
+            {% endfor %}
+        {% endif %}
+            <div class="input-group">
+                <label for="email">Email:</label> <br>
+                <input type="text" id="email"  name="sender_email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label> <br>
+                <input type="password" id="password" name="sender_password" required>
+            </div>
+            <div class="input-group">
+                <label for="scouting-file">Scouting File:</label> <br>
+                <input type="file" id="scouting-file" name="myfile" required>
+            </div>
+            <button class="create-button"> <strong>Create</strong></button>
+        </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
